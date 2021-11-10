@@ -1,0 +1,13 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  runs-on: docker
+  steps:
+    - run: docker build -t hugo00/dotnet-nuget:v-$(git rev-parse HEAD) .
+    - run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - run: docker push hugo00/dotnet-nuget:v-$(git rev-parse HEAD)
