@@ -1,0 +1,9 @@
+sudo: required
+language: generic
+services:
+  - docker
+
+script:
+  - docker build -t hugo00/dotnet-nuget:v-$(git rev-parse HEAD) .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push hugo00/dotnet-nuget:v-$(git rev-parse HEAD)
