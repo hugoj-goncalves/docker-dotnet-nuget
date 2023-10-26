@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0-focal
+FROM hugo00/dotnet-core-multi-target-docker:6.0-7.0
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG pt_BR.UTF-8
